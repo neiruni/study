@@ -7,13 +7,13 @@ print(100.12)
 print(type(100.12))
 
 #文字列
-print('100')
+print('\'100\'')
 print(type('100'))
 
-print("100")
+print("\"100\"")
 print(type("100"))
 
-print('ヤッホー')
+print('\'ヤッホー\'')
 print(type('ヤッホー'))
 
 #真偽値

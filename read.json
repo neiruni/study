@@ -1,0 +1,19 @@
+{
+  "program_list": [
+    {
+      "language": "Java",
+      "type": "コンパイラ言語",
+      "use": "バックエンド"
+    },
+    {
+      "language": "Python",
+      "type": "インタプリタ言語",
+      "use": "AI"
+    },
+    {
+      "language": "JavaScript",
+      "type": "インタプリタ言語",
+      "use": "フロントエンド"
+    }
+  ]
+}

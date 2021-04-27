@@ -50,12 +50,14 @@ dict1 = {
     '京':'京の夢大阪の夢',
 }
 
-def check(data):
-    if data in dict1.keys():
-        return dict1[data]
-    else:
-        return 'そんなのないよ'
 
 for i in range(3):
     buf = input()
-    print(check(buf))
+
+    if buf in dict1.keys():
+        print(dict1[buf])
+    else:
+        print('そんなのないよ！')
+        exit()
+
+    
