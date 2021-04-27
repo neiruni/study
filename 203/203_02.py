@@ -1,8 +1,12 @@
 
 total = 0
+buf = 0 
+
 
 for i in range(1,100,2):
-    total += i
-    print(total)
+    buf = total
+    total = buf + i
+
+    print(str(buf) + ' + ' + str(i) + ' = ' + str(total))
 
     
