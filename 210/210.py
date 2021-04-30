@@ -53,9 +53,12 @@ buf = input('単語出現ランキングの表示順位を入力：')
 dic = sorted(dic.items(), key = lambda x : x[1], reverse=True)
 
 if re.fullmatch(pattren, buf) is not None:
-    for i in range(int(buf)):
-        data = dic[i]
-        print((str(i+1) + '位').rjust(10), data[0].rjust(10), (str(data[1]) + '回').rjust(10))
+    if int(buf) <= int(len(dic)):
+        for i in range(int(buf)):
+            data = dic[i]
+            print((str(i+1) + '位').rjust(10), data[0].rjust(10), (str(data[1]) + '回').rjust(10))
+    else:
+        print(str(len(dic)) + '単語しか存在しません。')
 else:
     print('ランキングは半角数字で入力してください。')
 
