@@ -1,0 +1,15 @@
+th,td {
+    border: solid 1px;              /* 枠線指定 */
+}
+
+table {
+    border-collapse:  collapse;     /* セルの線を重ねる */
+}
+
+.index {
+    border-bottom: solid 4px gray;
+}
+
+.image {
+    width: 100%;
+}

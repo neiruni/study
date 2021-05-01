@@ -10,9 +10,8 @@ class Pikachu():
     def waza(self):
         print('電光石火', '１０万ボルト', 'アイアンテール')
     
-    def nakigoe(self, sound='ピカチュウ！'):
-        print(sound)
-        
+    def nakigoe(self):
+        print('ピカチュウ！')
 
 
 class Raichu(Pikachu):
@@ -26,14 +25,17 @@ class Raichu(Pikachu):
     def sinkawaza(self):
         print('ロケット頭突き', 'かみなりパンチ', 'かみなり')
     
+    def nakigoe(self):
+        print('ラァーイ')
 
 
 
-buf = Pikachu(5000, 300, 400, 900)
-buf.nakigoe()
+Pikachu = Pikachu(5000, 300, 400, 900)
+Pikachu.nakigoe()
 
-buf = Raichu(5000, 300, 400, 900)
-print(buf.hitpoint, buf.power, buf.defense, buf.speed)
-buf.waza()
-buf.sinkawaza()
-buf.nakigoe('ラァーイ')
+Raichu = Raichu(5000, 300, 400, 900)
+print(Raichu.hitpoint, Raichu.power, Raichu.defense, Raichu.speed)
+
+Raichu.waza()
+Raichu.sinkawaza()
+Raichu.nakigoe()
