@@ -21,10 +21,6 @@ Ctotal = 0
 pattern = '[A-C]+'
 
 
-n = 3
-a = ["paiza"] * n
-print(a)
-
 while True:
     buf = input('A：大阪店 B：名古屋店 C：北海道店\n')
     
