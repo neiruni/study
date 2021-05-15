@@ -8,8 +8,46 @@ table {
 
 .index {
     border-bottom: solid 4px gray;
+    border-left: 6px double gray;
+    padding-top: 5px;
+    padding-left: 20px;
+    background-color: rgb(165, 222, 236);
 }
 
 .image {
     width: 100%;
 }
+
+.span {
+    background-color: aqua;
+}
+
+.li {
+    padding: 10px;
+    padding-left: 50px;
+}
+
+
+
+footer{
+    width: 100%;
+    height: 50px;
+    background-color: #0d2731;
+    color: white;
+    text-align: center;
+}
+
+header {
+    height: 50px;
+    width: 100%;
+    background-color: #0d2731;
+    color: white;
+}
+
+.image2 {
+    width:auto;
+    height:auto;
+    max-width:100%;
+    max-height:100%;
+}
+
