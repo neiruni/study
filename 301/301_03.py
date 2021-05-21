@@ -20,6 +20,7 @@ Btotal = 0
 Ctotal = 0
 pattern = '[A-C]+'
 
+
 while True:
     buf = input('A：大阪店 B：名古屋店 C：北海道店\n')
     

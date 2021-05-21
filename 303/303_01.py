@@ -1,3 +1,5 @@
+from decimal import *
+
 
 class Pikachu():
 
@@ -6,36 +8,60 @@ class Pikachu():
         self.power = power
         self.defense = defense
         self.speed = speed
+        self.name = 'ピカチュウ'
     
-    def waza(self):
-        print('電光石火', '１０万ボルト', 'アイアンテール')
-    
-    def nakigoe(self):
-        print('ピカチュウ！')
+    def denkousekka(self):
+        waza = '電光石火'
+        damage = self.power * Decimal('1.3')
+        damage = damage.quantize(Decimal("0"), rounding=ROUND_HALF_UP)
+        return waza ,damage
 
+    def boruto(self):
+        waza = '10万ボルト'
+        damage = self.power * Decimal('1.3')
+        damage = damage.quantize(Decimal("0"), rounding=ROUND_HALF_UP)
+        return waza, damage
+
+    def tail(self):
+        waza = 'アイアンテール'
+        damage = self.power * Decimal('1.3')
+        damage = damage.quantize(Decimal("0"), rounding=ROUND_HALF_UP)
+        return waza ,damage
+    
 
 class Raichu(Pikachu):
     
     def __init__(self, hitpoint, power, defense, speed):
         super().__init__(hitpoint, power, defense, speed)
 
-        self.hitpoint = self.hitpoint + 8000
+        self.name = 'ライチュウ'
         self.power = self.power * 2
-
-    def sinkawaza(self):
-        print('ロケット頭突き', 'かみなりパンチ', 'かみなり')
     
-    def nakigoe(self):
-        print('ラァーイ')
+    def zutsuki(self):
+        waza = 'ロケット頭突き'
+        damage = self.power * Decimal('1.1')
+        damage = damage.quantize(Decimal("0"), rounding=ROUND_HALF_UP)
+        return waza ,damage
+    
+    def panti(self):
+        waza = 'かみなりパンチ'
+        damage = self.power * Decimal('1.1')
+        damage = damage.quantize(Decimal("0"), rounding=ROUND_HALF_UP)
+        return waza ,damage
+    
+    def kaminari(self):
+        waza = 'かみなり'
+        damage = self.power * Decimal('1.1')
+        damage = damage.quantize(Decimal("0"), rounding=ROUND_HALF_UP)
+        return waza ,damage
+    
+
+Pikachu = Pikachu(3000, 100, 200, 500)
+Raichu = Raichu(3000, 100, 200, 500)
 
 
+print('さとし' + str(Pikachu.name) + 'が' + str(Pikachu.denkousekka()[0]) + 'をした。' + '（ダメージ：' +str(Pikachu.denkousekka()[1]) + '）')
+print('さとし' + str(Pikachu.name) + 'が' + str(Pikachu.boruto()[0]) + 'をした。' + '（ダメージ：' +str(Pikachu.boruto()[1]) + '）')
 
-Pikachu = Pikachu(5000, 300, 400, 900)
-Pikachu.nakigoe()
-
-Raichu = Raichu(5000, 300, 400, 900)
-print(Raichu.hitpoint, Raichu.power, Raichu.defense, Raichu.speed)
-
-Raichu.waza()
-Raichu.sinkawaza()
-Raichu.nakigoe()
+print('さとし' + str(Raichu.name) + 'が' + str(Raichu.denkousekka()[0]) + 'をした。' + '（ダメージ：' +str(Raichu.denkousekka()[1]) + '）')
+print('さとし' + str(Raichu.name) + 'が' + str(Raichu.boruto()[0]) + 'をした。' + '（ダメージ：' +str(Raichu.boruto()[1]) + '）')
