@@ -60,8 +60,8 @@ Pikachu = Pikachu(3000, 100, 200, 500)
 Raichu = Raichu(3000, 100, 200, 500)
 
 
-print('さとし' + str(Pikachu.name) + 'が' + str(Pikachu.denkousekka()[0]) + 'をした。' + '（ダメージ：' +str(Pikachu.denkousekka()[1]) + '）')
-print('さとし' + str(Pikachu.name) + 'が' + str(Pikachu.boruto()[0]) + 'をした。' + '（ダメージ：' +str(Pikachu.boruto()[1]) + '）')
+print('さとし' + Pikachu.name + 'が' + str(Pikachu.denkousekka()[0]) + 'をした。' + '（ダメージ：' +str(Pikachu.denkousekka()[1]) + '）')
+print('さとし' + Pikachu.name + 'が' + str(Pikachu.boruto()[0]) + 'をした。' + '（ダメージ：' +str(Pikachu.boruto()[1]) + '）')
 
-print('さとし' + str(Raichu.name) + 'が' + str(Raichu.denkousekka()[0]) + 'をした。' + '（ダメージ：' +str(Raichu.denkousekka()[1]) + '）')
-print('さとし' + str(Raichu.name) + 'が' + str(Raichu.boruto()[0]) + 'をした。' + '（ダメージ：' +str(Raichu.boruto()[1]) + '）')
+print('さとし' + Raichu.name + 'が' + str(Raichu.denkousekka()[0]) + 'をした。' + '（ダメージ：' +str(Raichu.denkousekka()[1]) + '）')
+print('さとし' + Raichu.name + 'が' + str(Raichu.boruto()[0]) + 'をした。' + '（ダメージ：' +str(Raichu.boruto()[1]) + '）')
