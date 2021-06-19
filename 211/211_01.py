@@ -1,7 +1,7 @@
 import time
 from itertools import product
 import zipfile
-import string, itertools
+import itertools
 
 starttime = time.time() 
 chars = 'abcdefghijklmnopqrstuvwxyz0123456789'
@@ -24,4 +24,4 @@ with zipfile.ZipFile(filepath, 'r') as zip_data:
         except zipfile.BadZipFile:
             print(password)
 
-   
+#経過時間：1689.5017714500427 　28分15秒
