@@ -1,4 +1,5 @@
 
+#親クラス
 class sakana():
     def __init__(self, name):
         self.name = name
@@ -15,7 +16,6 @@ class demekin(sakana):
     def say(self):
         print(self.name + 'は' + self.move + '泳いだ')
         
-
 
 class same(sakana):
     def __init__(self, name, dousa):

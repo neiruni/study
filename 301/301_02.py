@@ -1,6 +1,6 @@
 
 class usi:
-    def __init__(self, name, nenrei, seibetu, taizyu):
+    def __init__(self, name:str , nenrei:int , seibetu:bool, taizyu:int):
         usi.name = name
         usi.nenrei = nenrei
         usi.seibetu = seibetu

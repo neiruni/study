@@ -1,0 +1,40 @@
+CREATE TABLE `m_users`(
+`user_id` varchar(10) not null,
+`user_nm` varchar(30) not null,
+`register_dt` datetime not null,
+`version` int not null,
+PRIMARY KEY(`user_id`)
+);
+
+
+CREATE TABLE `m_items`(
+`item_no` int not null,
+`item_nm` varchar(30) not null,
+`register_dt` datetime not null,
+`version` int not null,
+PRIMARY KEY(`item_no`)
+);
+
+
+CREATE TABLE `t_orders`(
+`user_id` varchar(10) not null,
+`order_no` int not null,
+`order_date` date not null,
+`shipping_address` varchar(200),
+`register_dt` datetime not null,
+`version` int not null,
+PRIMARY KEY(`user_id`, `order_no`)
+);
+
+
+CREATE TABLE `t_order_details`(
+`user_id` varchar(10) not null,
+`order_no` int not null,
+`item_no` int not null,
+`quanity` int,
+`register_dt` datetime not null,
+`version` int not null,
+PRIMARY KEY(`user_id`, `order_no`, `item_no`)
+);
+
+

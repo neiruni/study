@@ -1,80 +1,76 @@
 
-class Ningen():
-    def __init__(self, ningenname, ningenweight):
-        self.ningenname = ningenname
-        self.ningenweight = ningenweight
+class Human():
+    def __init__(self, name, weight):
+        self.name = name        
+        self.weight = weight
+
+    def info_func(self):
+        print('{0}（体重：{1}kg）'.format(self.name, self.weight))
 
 
 class Kisyu():
-    def __init__(self, kisyuname, kisyuweight):
-        self.kisyuname = kisyuname
-        self.kisyuweight = kisyuweight
+    def __init__(self, name, weight):
+        self.name = name
+        self.weight = weight
+    
+    def info_func(self):
+        print('{0}（体重：{1}kg）'.format(self.name, self.weight))
 
 
-class Uma():
-    def __init__(self, umaname, umaweight, umaspeed):
-        self.umaname = umaname
-        self.umaweight = umaweight
-        self.umaspeed = umaspeed
+class House():
+    def __init__(self, name, weight, speed):
+        self.name = name
+        self.weight = weight
+        self.speed = speed
+    
+    def info_func(self):
+        print('{0}（体重：{1}kg,速度{2}km/h）'.format(self.name, self.weight, self.speed))
+    
+    def say_func(self, name, speed):
+        print('{0}走る。(速度：{1}km/h）'.format(name, speed))
+    
+    def say_2_func(self, name, cnt, speed):
+        print('{0}走る。乗馬者{1}名(速度：{2}km/h）'.format(name, cnt, speed))
 
     #走るメソッド
     def run_func(self, *args):
-        print(str(self.umaname) + '走る。(速度：' + str(self.umaspeed) + 'km/h）')
-
-    #走る（騎手）メソッド
-    def run_kisyu_func(self, *args):
-        total = 0
+        weight_total = 0
         cnt = 0
 
-        for i in args:
-            total += i.kisyuweight
-            cnt += 1
-        
-        if total <= 200:
-            self.umaspeed = self.umaspeed - total / 20
-            print(str(self.umaname) + '走る。乗馬者' + str(cnt) +'名(速度：' + str(self.umaspeed) + 'km/h）')
+        if len(args) == 0:
+            self.say_func(self.name, self.speed)
         else:
-            exit()        
+            for obj in args:
+                weight_total += obj.weight
+                cnt += 1
 
-    #走る（人）メソッド
-    def run_ningen_func(self, *args):
-        total = 0
-        cnt = 0
+            if isinstance(obj, Kisyu):
+                self.speed = self.speed - weight_total / 20
+            elif isinstance(obj, Human):
+                self.speed = self.speed - weight_total / 10
+            
+            self.say_2_func(self.name, cnt, self.speed)
 
-        for i in args:
-            total += i.ningenweight
-            cnt += 1
-        
-        if total <= 200:
-            self.umaspeed = self.umaspeed - total / 10
-            print(str(self.umaname) + '走る。乗馬者' + str(cnt) +'名(速度：' + str(self.umaspeed) + 'km/h）')
-        else:
-            exit()        
-    
 
 #馬インスタンス作成
-umainsta = Uma('ディープインパクト', '200.5', 50)
+umainsta = House('ディープインパクト', '200.5', 50)
+umainsta.info_func()
 
 #人インスタンス作成
-Ningen1 = Ningen('人1', 80)
+human1 = Human('人1', 80)
+human1.info_func()
 
 #騎手インスタンス作成
 kisyu1 = Kisyu('たけゆたか', 50.2)
+kisyu1.info_func()
+
 kisyu2 = Kisyu('たなか', 60.6)
-
-
-print(umainsta.umaname + '（体重：' + str(umainsta.umaweight) + 'kg,速度：' + str(umainsta.umaspeed) + 'km/h')
-print(kisyu1.kisyuname + '（体重：' + str(kisyu1.kisyuweight) + 'kg）')
-print(kisyu2.kisyuname + '（体重：' + str(kisyu2.kisyuweight) + 'kg）')
-print(Ningen1.ningenname + '（体重：' + str(Ningen1.ningenweight) + 'kg）')
-
+kisyu2.info_func()
 
 umainsta.run_func()
-#umainsta.run_kisyu_func(kisyu1.kisyuweight, kisyu2.kisyuweight)
-umainsta.run_kisyu_func(kisyu1, kisyu2)
-#umainsta.run_kisyu_func(Kisyu(), Kisyu())
-#umainsta.run_kisyu_func(Kisyu('たけゆたか', 50.2), Kisyu('たなか', 60.6))
-umainsta.run_ningen_func(Ningen1)
+umainsta.run_func(human1)
+umainsta.run_func(kisyu1, kisyu2)
+
 
 
 
