@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="container bg-light">
+      <h3>---新規登録---</h3>
+      <form method="POST">
+        {% csrf_token %}
+        <div class="mb-3">
+          {{ form.id.errors }}
+          {{ form.id.label }}
+          {{ form.id }}
+        </div>
+        <div class="mb-3">
+          {{ form.name.errors }}
+          {{ form.name.label }}
+          {{ form.name }}
+        </div>
+        <div class="mb-3">
+          {{ form.memo.errors }}
+          {{ form.memo.label }}
+          {{ form.memo }}
+        </div>
+        <button type="submit" class="btn btn-primary">登録</button>
+      </form>
+    </div>
+{% endblock %}

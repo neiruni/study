@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block header %}
+<link rel="stylesheet" href="{% static 'index.css' %}">
+{% endblock %}
+
+{% block title %}
+<title>商品一覧</title>
+{% endblock %}
+
+{% block content %}
+  <div class="container mt-5 p-lg-5 bg-light">
+    <h4>商品マスタ</h4>
+    <div class="d-flex flex-row bd-highlight mb-3 form-control">
+        <div class="col-5">
+            <h5>メニュー</h5>
+            <a type="button" href="{% url 'web:item_create' %}">商品登録</a>
+        </div>
+        <div class="col-5">
+            <h5>マスタ</h5>
+            <a type="button" href="{% url 'web:user' %}">ユーザーマスタ</a>
+        </div>
+        <div class="col-2">
+            <div>
+                <a type="button" href="{% url 'web:logout' %}">ログアウト</a>
+            </div>
+        </div>
+    </div>
+    <div class='form-control'>
+        <form action="{% url 'web:index' %}" method="POST">
+            {% csrf_token %}
+            <h5>検索</h5>
+            <div class="d-flex flex-row bd-highlight mb-3">
+                <div class="form-content">
+                    <label class="form-label">{{ form.item_no.label }}</label>
+                    {{ form.item_no }}
+                </div>
+                <div class="form-content">
+                    <label class="form-label">{{ form.item_nm.label }}</label>
+                    {{ form.item_nm }}
+                </div>
+                <div class="form-content">
+                    <label class="form-label">{{ form.register_from.label }}</label>
+                    {{ form.register_from }}
+                </div>
+                <div class="form-content">
+                    <label class="form-label">{{ form.register_to.label }}</label>
+                    {{ form.register_to }}
+                </div>
+                <button type="submit" class="btn btn-primary form-btn">検索</button>  
+            </div>  
+        </form> 
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">商品ID</th>
+                <th scope="col">商品名</th>
+                <th scope="col">登録日時</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in object_list %}
+            <tr>
+                <td><a href="{% url 'web:item_update' item.pk %}">{{ item.item_no }}</a></td>
+                <td>{{ item.item_nm }}</td>
+                <td>{{ item.register_dt|date:"Y/m/d" }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
+

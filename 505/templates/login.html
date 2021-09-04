@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block header %}
+<link rel="stylesheet" href="{% static 'index.css' %}">
+{% endblock %}
+
+{% block title %}
+<title>ログイン</title>
+{% endblock %}
+
+{% block content %} 
+<div class="form-login">
+    <div class="login-content">
+        <h4>ログイン</h4>
+        <form action="" method="POST">
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+            {{ errors }}
+            <div class="login-content">
+                <label class="login-label">{{ form.user_id.label }}</label>
+                {{ form.user_id }}
+                {{ form.user_id.errors }} 
+            </div>
+            <div class="login-content"> 
+                <label class="login-label">{{ form.passwd.label }}</label>
+                {{ form.passwd }}
+                {{ form.passwd.errors }}  
+            </div>
+            <div class="login-content">
+                <button type="submit" class="btn btn-success btn-lg btn-block" >ログイン</button>
+                <input type="hidden" name="next" value="{{ next }}" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+    
+{% endblock %}

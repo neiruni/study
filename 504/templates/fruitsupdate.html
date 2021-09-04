@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="container bg-light">
+      <h3>---データ更新---</h3>
+      <form method="PUT" action="{% url 'web:fruitsdetail' id %}">
+        {% csrf_token %}
+        <div class="mb-3">
+          {{ form.id.errors }}
+          {{ form.id.label }}
+          {{ form.id }}
+        </div>
+        <div class="mb-3">
+          {{ form.name.errors }}
+          {{ form.name.label }}
+          {{ form.name }}
+        </div>
+        <div class="mb-3">
+          {{ form.memo.errors }}
+          {{ form.memo.label }}
+          {{ form.memo }}
+        </div>
+        <button id="btnsend" class="btn btn-primary" type="submit">更新</button>
+        <a class="btn btn-primary" href="{% url 'web:fruits' %}">戻る</a>
+      </form>
+    </div>
+{% endblock %}
+
+{% block js %}
+  <script>
+    $('#btnsend').on('click', function(){
+      // Ajax通信を開始
+      $.ajax({
+        'url': '{% url "web:fruitsdetail" %}',
+        'type': 'PUT',
+        'dataType': 'json',
+        // 'data':  {
+        //   'id': $('#id').val(),
+        //   'name': $('#name').val(),
+        //   'memo': $('#memo').val(),
+        // },
+        'timeout': 5000,
+      })
+      .done(function(data) {
+          // 通信成功時の処理を記述
+      })
+      .fail(function() {
+          // 通信失敗時の処理を記述
+          console.log('no')
+      });
+    })
+  </script>
+{% endblock %}

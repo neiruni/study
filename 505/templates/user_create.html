@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block header %}
+ <link rel="stylesheet" href="{% static 'index.css' %}">
+{% endblock %}
+
+{% block title %}
+ <title>ユーザー登録</title>
+{% endblock %}
+
+{% block content %}
+  <div class="container mt-5 p-lg-5 bg-light">
+    <h4>ユーザー登録</h4>
+    <div class='form-control'>
+        <form action="{% url 'web:user_create' %}" method="POST">
+            {% csrf_token %}
+            <div class="content">
+                <label class="label">{{ form.user_id.label }}</label>
+                {{ form.user_id }}
+                {{ form.user_id.errors }} 
+            </div>
+            <div class="content">     
+                <label class="label">{{ form.user_name.label }}</label>
+                {{ form.user_name }}
+            </div>
+            <div class="content"> 
+                <label class="label">{{ form.passwd.label }}</label>
+                {{ form.passwd }}
+                {{ form.passwd.errors }}  
+            </div>
+            <div class="content"> 
+                <label class="label">{{ form.del_flg.label }}</label>
+                {{ form.del_flg }}
+            </div>
+            <div class="content"> 
+                <label class="label">{{ form.register_dt.label }}</label>
+                {{ form.register_dt }}
+            </div>
+            <div class="content"> 
+                <label class="label">{{ form.version.label }}</label>
+                {{ form.version }}
+            </div>
+            <div class="content"> 
+                <a class="a-contents btn btn-primary" type="button" href="{% url 'web:user' %}">キャンセル</a>
+                <button type="submit" class="btn btn-primary">登録</button>
+            </div>
+        </form> 
+    </div>
+</div>
+{% endblock %}

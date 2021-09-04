@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block header %}
+ <link rel="stylesheet" href="{% static 'index.css' %}">
+{% endblock %}
+
+{% block title %}
+ <title>商品更新</title>
+{% endblock %}
+
+{% block content %}
+  <div class="container mt-5 p-lg-5 bg-light">
+    <h4>商品登録</h4>
+    <div class='form-control'>
+        <form action="#" method="POST">
+            {% csrf_token %}
+            <div class="content">
+                <label class="label">{{ form.item_no.label }}</label>
+                {{ form.item_no }}
+            </div>
+            <div class="content">    
+                <label class="label">{{ form.item_nm.label }}</label>
+                {{ form.item_nm }}
+            </div>
+            <div class="content">
+                <label class="label">{{ form.del_flg.label }}</label>
+                {{ form.del_flg }}
+            </div>
+            <div class="content">
+                <label class="label">{{ form.register_dt.label }}</label>
+                {{ form.register_dt }}
+            </div>
+            <div class="content">
+                <label class="label">{{ form.version.label }}</label>
+                {{ form.version }}
+            </div>
+            <div class="content">
+                <a class="a-contents btn btn-primary" type="button" href="{% url 'web:index' %}">キャンセル</a>
+                <button type="submit" class="btn btn-primary" name="delete" value="delete">削除</button>
+                <button type="submit" class="btn btn-primary" name="update" value="update">更新</button>
+            </div>
+        </form> 
+    </div>
+</div>
+{% endblock %}

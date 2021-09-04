@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    {% if object_list|length != 0 %}
+      <span>件数：{{ object_list|length }}</span>
+    {% endif %}
+    <a class='btn btn-primary' href="{% url 'web:fruitscreate' %}">新規追加</a>
+    <table class="table table-dark table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">果物名</th>
+                <th scope="col">メモ</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in object_list %}
+            <tr>
+                <td id='no'>{{ item.0 }}
+                <td id='name'>{{ item.1 }}</td>
+                <td id='memo'>{{ item.2 }}</td>
+                <td>
+                  <a class="btn btn-primary pl-2" href="{% url 'web:fruitsdetail' item.0 %}">更新</a>
+                  <button class="btn btn-primary pl-2" id=delete{{ item.0 }} value={{ item.0 }}>削除</button>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+
+{% block js %}
+  <script>
+    $(document).on('click', function(event) {
+      let target = event.target.id;
+      if (target.indexOf('delete') !== -1) {
+        id = event.target.value;
+        ajaxfunc(id)
+      }
+    })
+
+    function ajaxfunc(id){
+      // Ajax通信を開始
+      url = "/fruits/" + id
+      $.ajax({
+        'url': url,
+        'type': 'DELETE',
+        'dataType': 'json',
+        'data':  {
+          'no': $('#no').val(),
+          'name': $('#name').val(),
+          'memo': $('#memo').val(),
+        },
+        'timeout': 5000,
+      })
+      .done(function(data) {
+          // 通信成功時の処理を記述
+          location.reload();
+      })
+      .fail(function() {
+          // 通信失敗時の処理を記述
+      });
+    }
+  </script>
+{% endblock %}
