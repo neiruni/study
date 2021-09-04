@@ -147,23 +147,24 @@ class UserUpdateView(UpdateView):
 
     def post(self, request, pk):
         form = UserUpdateForm(request.POST)
-    
+        object = M_Users.objects.get(user_id=request.POST['user_id'])
+
+        if 'delete' in request.POST:
+            object.del_flg = 1
+            object.save()
+            
+            params = {
+                'form': UserForm(),
+            }
+            return render(request, 'user.html', params)   
+     
         if not form.is_valid():
             param = {
                 'form': UserUpdateForm(request.POST)
             }
             return render(request, 'user_update.html', param)
-        
-        object = M_Users.objects.get(user_id=form.cleaned_data['user_id'])
 
-        if 'delete' in request.POST:
-            post = form.save(commit=False)
-            post.user_name = object.user_name
-            post.passwd = object.passwd
-            post.del_flg = 1
-            post.save()
-
-        elif 'update' in request.POST:
+        if 'update' in request.POST:
             if form.cleaned_data['user_id'] == '':
                 post = form.save(commit=False)
                 post.passwd = object.passwd 
@@ -205,5 +206,6 @@ class LoginView(View):
 
 class LogoutView(LogoutView):
     template_name = 'logout.html'
+
 
 
