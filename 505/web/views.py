@@ -17,6 +17,13 @@ import hashlib
 class IndexView(TemplateView):
     template_name = 'index.html'
 
+    def get(self, request):
+        params = {
+            'form': ItemForm(request.session.get('form_data')),
+        }
+        return render(request, self.template_name, params)
+
+
     def get_context_data(self, **kwargs):
         param = super().get_context_data(**kwargs)
         param['form'] = ItemForm()
@@ -97,6 +104,12 @@ class ItemUpdateView(UpdateView):
 class UserView(TemplateView):
     template_name = 'user.html'
 
+    def get(self, request):
+        params = {
+            'form': UserForm(request.session.get('form_data')),
+        }
+        return render(request, self.template_name, params)
+
     def get_context_data(self, **kwargs):
         param = super().get_context_data(**kwargs)
         param['form'] = UserForm()
@@ -126,12 +139,10 @@ class UserCreateView(CreateView):
             }
             return render(request, 'user_create.html', param)
         
-
-        sha = sha256()
-        sha.update(b'request.POST["passwd"]')
-
+        data = request.POST["passwd"]
+        passwd = hashlib.sha256(data.encode()).hexdigest()
         post = form.save(commit=False)
-        post.passwd = sha.hexdigest()
+        post.passwd = passwd
         post.save()
 
         params = {

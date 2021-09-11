@@ -9,6 +9,7 @@ import re
 from django.contrib.auth.forms import AuthenticationForm
 from hashlib import sha256
 import hashlib
+from django.utils import timezone
 
 
 class ItemForm(forms.Form):
@@ -63,7 +64,7 @@ class ItemCreateForm(forms.ModelForm):
     
     register_dt = forms.CharField(
         label='登録日時：', 
-        initial=date.today(),
+        initial=timezone.localtime(),
         widget=forms.TextInput(attrs={"type": "datetime", "class": "input", "name": "register_dt", "readonly": "readonly"})
         )
 
@@ -168,7 +169,7 @@ class UserCreateForm(models.ModelForm):
     
     register_dt = forms.CharField(
         label='登録日時：', 
-        initial=date.today(),
+        initial=timezone.localtime(),
         widget=forms.TextInput(attrs={"type": "datetime", "class": "input", "name": "register_dt", "readonly": "readonly"})
         )
 
